@@ -1,0 +1,6 @@
+Inbound Rules:
+Type: SSH  | Protocol: TCP | Port: 22 | Source: 143.179.136.22/32 | Description: SSH from my IP
+Type: HTTP | Protocol: TCP | Port: 80 | Source: 0.0.0.0/0        | Description: Public HTTP access
+
+Outbound Rules:
+Type: All traffic | Protocol: All | Port: All | Destination: 0.0.0.0/0 | Description: (default)
