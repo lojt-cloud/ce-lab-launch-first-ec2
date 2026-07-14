@@ -21,11 +21,20 @@ us-east-1 / us-east-1c
 
 **Inbound Rules:**
 
-my rules going here
+Type: SSH  | Protocol: TCP | Port: 22 | Source: 143.179.136.22/32 | Description: SSH from my IP
+Type: HTTP | Protocol: TCP | Port: 80 | Source: 0.0.0.0/0        | Description: Public HTTP access
 
 **Outbound Rules:**
 
-my other rules going here
+Type: All traffic | Protocol: All | Port: All | Destination: 0.0.0.0/0 | Description: (default)
+
+
+## Security Verification
+
+- SSH:  Successfully connected from my IP
+- HTTP:  Web page loads correctly via browser and curl
+- Ping (ICMP):  No response (times out) - confirms security group only
+  allows the explicitly configured SSH and HTTP traffic, nothing else
 
 ## Screenshots
 
@@ -47,7 +56,7 @@ my other rules going here
 ---
 
 ## Challenges Faced and Solutions
-
+1.
 When creating the security group, the "Create security group" button appeared
 unresponsive - no error shown. After checking the VPC dropdown specifically,
 it showed "No VPC available." Switching regions didn't resolve it. Checking
@@ -56,6 +65,17 @@ region (not a UI bug, and no account limit reached). Fixed by going to
 VPC Console → Your VPCs → Actions → Create default VPC, which automatically
 provisioned a complete default VPC setup. After that, the security group
 creation worked immediately.
+
+2.
+AWS CLI commands (describe-security-groups) initially failed with credential
+and "security group not found" errors. First issue was expired/missing local
+CLI credentials - fixed with `aws configure`. Second issue was a region
+mismatch: my CLI's default region is eu-north-1, but this lab's resources
+were created in us-east-1 (from the earlier VPC fix). Resolved by explicitly
+specifying `--region us-east-1` on the command. This is the same category of
+issue I hit earlier this week with EC2 tagging - for future me: always
+check `aws configure get region` first whenever a resource "isn't found"
+unexpectedly.
 ---
 
 ## Learning Reflections
