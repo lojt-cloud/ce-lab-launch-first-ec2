@@ -2,7 +2,7 @@
 # Lab M2.01 - Launch Your First EC2 Instance
 
 **Student Name:** Balint Lojt
-**Date:** [today's date]
+**Date:** 14/07/2026
 
 ---
 
@@ -39,19 +39,23 @@ Type: All traffic | Protocol: All | Port: All | Destination: 0.0.0.0/0 | Descrip
 ## Screenshots
 
 **1. Instance Running:**
-![Instance Running](screenshots/01-instance-running.png)
+<img width="1870" height="384" alt="01-instance-running" src="https://github.com/user-attachments/assets/f04129e7-66ec-44fa-9905-0f85ef45a430" />
+
 
 **2. Security Group Rules:**
-![Security Group](screenshots/02-security-group-rules.png)
+<img width="1576" height="172" alt="02-security-group-rules" src="https://github.com/user-attachments/assets/fe27931d-50f3-4b57-8d46-439e07cd7892" />
+
 
 **3. SSH Connection:**
-![SSH Connection](screenshots/03-ssh-connection.png)
+<img width="879" height="377" alt="03-ssh-connection" src="https://github.com/user-attachments/assets/6b15157c-de53-45e0-999d-b1f842b30383" />
+
 
 **4. Web Server (Browser):**
-![Web Server](screenshots/04-web-server-browser.png)
+<img width="947" height="307" alt="04-web-server-browser" src="https://github.com/user-attachments/assets/b46bcd49-ce44-486d-91af-cb6577a32df4" />
+
 
 **5. Instance Details:**
-![Instance Details](screenshots/05-instance-details.png)
+<img width="1510" height="973" alt="05-instance-detail" src="https://github.com/user-attachments/assets/f3f23a5c-1662-402a-910f-9f45c136506b" />
 
 ---
 
