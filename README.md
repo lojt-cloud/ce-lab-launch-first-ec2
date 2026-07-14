@@ -72,7 +72,7 @@ curl ifconfig.me
 curl icanhazip.com
 ```
 
-**Write down your IP:** `___.___.___.___ ` (you'll need this!)
+**Write down your IP: 143.179.136.22 (you'll need this!)
 
 ---
 
