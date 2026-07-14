@@ -292,15 +292,15 @@ ip addr show
 
 1. **In your web browser**, visit:
    ```
-   http://YOUR_PUBLIC_IP
+   http://54.163.11.40/
    ```
    
    (Use the same IP you used for SSH)
 
 2. **You should see:**
-   - A webpage saying "Hello from [hostname]"
-   - Instance ID
-   - Availability Zone
+   - A webpage saying "Hello from ip-172-31-18-190.ec2.internal"
+   - Instance ID: i-0f1913ce72c45fb6b
+   - Availability Zone: us-east-1c
 
 3. **Take a screenshot** of the webpage
 
@@ -326,7 +326,7 @@ Test that your security group is working correctly:
 
 3. **HTTP should work:**
    ```bash
-   curl http://YOUR_PUBLIC_IP
+   curl /http://54.163.11.40/
    # Should return HTML ✅
    ```
 
@@ -377,10 +377,11 @@ Create a **public** GitHub repository called `ce-lab-launch-ec2-instance` with:
 **3. security-group-rules.txt** - Copy/paste:
 ```
 Inbound Rules:
-[Paste your inbound rules here]
+Type: SSH  | Protocol: TCP | Port: 22 | Source: 143.179.136.22/32 | Description: SSH from my IP
+Type: HTTP | Protocol: TCP | Port: 80 | Source: 0.0.0.0/0        | Description: Public HTTP access
 
 Outbound Rules:
-[Paste your outbound rules here]
+Type: All traffic | Protocol: All | Port: All | Destination: 0.0.0.0/0 | Description: (default)
 ```
 
 **4. instance-info.txt** - Run on instance and save output:
