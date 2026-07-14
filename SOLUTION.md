@@ -81,26 +81,65 @@ unexpectedly.
 ## Learning Reflections
 
 ### What surprised you most about launching a cloud server?
-
-
+It took much less time than I expected once the correct steps were clear.
+from nothing to a running, publicly accessible web server in under an hour,
+including troubleshooting a VPC issue along the way. I was also surprised
+by how much attention security requires even for a simple lab like restricting
+SSH to only my IP (rather than 0.0.0.0/0) matters because leaving port 22
+open to the entire internet would let anyone attempt to brute-force or
+exploit the server, not just me.
 ### How is this different from setting up a physical server or local VM?
+Configuration is much faster. I just select the specs I want (instance
+type, OS) rather than physically installing hardware or manually setting
+up a local VM's virtual hardware. The user data script also let me pre-load
+Apache so the server was fully configured and serving content the moment it
+booted, no manual install needed afterward.
 
+Beyond speed, there's no physical hardware to own or maintain at all.
+With a physical server I'd need to buy, rack, and power actual equipment, and
+even a local VM still depends on hardware I own and maintain. With EC2, if
+something's wrong I can just terminate the instance and launch a fresh one
+in minutes, and I only pay for the hours it's actually running, rather than
+a large upfront cost or a machine sitting idle regardless of use.
 
 ### What security concerns did you need to consider?
 
+The main concern was correctly scoping each port to who should actually
+have access. SSH (port 22) needed to be restricted to only my own IP
+address (using /32), since leaving it open to 0.0.0.0/0 would expose
+administrative access to anyone on the internet. HTTP (port 80) was
+intentionally left open to everyone, since a web server is meant to be
+publicly accessible - different purposes need different exposure levels.
+
+I also had to handle the SSH private key file securely - setting it to
+read-only permissions (chmod 400) and making sure it never ended up
+committed to the git repository, since it's a real credential that would
+let anyone with it access my instance directly.
+
+Beyond just configuring the rules, I also verified them - confirming SSH
+and HTTP worked as expected, and that ping (ICMP) was correctly blocked
+since it wasn't explicitly allowed, proving the security group wasn't
+accidentally more permissive than intended.
 
 ### How long would this process take with traditional infrastructure?
-
+Hours to days, not minutes. Physical hardware would need to be purchased,
+racked, and cabled, or even a local VM's host machine still needs OS
+installation and setup. Then manually configuring all the network ports
+and firewall rules, testing that connectivity works, installing the actual
+software (Apache in this case), testing again, and checking everything is
+updated to the latest version. Each of those steps that took seconds in the
+AWS Console (selecting an instance type, running a startup script) would be
+a manual, time-consuming task with traditional infrastructure.
 
 ---
 
 ## Time Tracking
 
-- Creating key pair: ___ minutes
-- Creating security group: ___ minutes
-- Launching instance: ___ minutes
-- Connecting via SSH: ___ minutes
-- Testing and screenshots: ___ minutes
-- Documentation: ___ minutes
+- Creating key pair: 5 minutes
+- Creating security group: 15 minutes (had issue that I explained in the challanges part)
+- Launching instance: 1 minutes
+- Connecting via SSH: 2 minutes
+- Testing and screenshots: 20 minutes
+- Documentation: 1 hour 10  minutes
 
-**Total time:** ___ minutes
+**Total time:** 1 hour 53 minutes
