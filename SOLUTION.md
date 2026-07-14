@@ -5,6 +5,11 @@
 **Date:** 14/07/2026
 
 ---
+**Note:** My public IP shown throughout this document (143.179.136.22) was
+correct at the time this lab was completed. My IP has since changed to
+143.179.136.227 (likely due to my ISP reassigning it), which is reflected
+in subsequent labs (e.g. ce-lab-ssh-security).
+
 
 ## Instance Details
 
